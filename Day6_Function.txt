@@ -1,0 +1,114 @@
+1)
+#!/bin/bash
+function degFtodegC() {
+output=$(( $(( $in - 32 )) * 5/9 ))
+echo $output;
+}
+
+function degCtodegF() {
+output=$(( $(( $in * 9/5 )) + 32 ))
+echo $output;
+}
+
+echo "Enter 1 for DegF_to_DegC conversion "
+echo "Enter 2 for DegC_to_DegF conversion "
+read -p "Enter the Choice" input
+read -p "Enter a input to perform conversion: " in
+output=0;
+case $input in
+             1)
+                if [ $in -ge 32 ] && [ $in -le 212 ]
+                then
+                degFtodegC $in
+                fi
+                ;;
+             2)
+                if [ $in -ge 0 ] && [ $in -le 100 ]
+                then
+                degCtodegF $in
+                fi
+                ;;
+esac
+
+2)
+#!/bin/bash
+function palindrome() {
+number=$n
+reverse=0
+rem=0
+while [ $n -gt 0 ]
+do
+rem=`expr $n % 10 `
+n=`expr $n / 10 `
+reverse=`expr $reverse \* 10 + $rem`
+done
+echo $reverse
+if [ $number -eq $reverse ]
+then
+    echo "Number is palindrome"
+else
+    echo "Number is not palindrome"
+fi
+}
+
+echo "Enter the number"
+read n
+palindrome $n
+
+3)
+#!/bin/bash
+function prime() {
+f=1
+for(( i=2; i<=$num/2; i++ ))
+do
+        if [ $(( $num%i )) -eq 0 ]
+        then
+        f=0
+        break
+        fi
+done
+       if  [ $f -eq 1 ]
+       then
+       echo "$num is prime"
+       else
+       echo "$num is not prime"
+       fi
+}
+
+function palindrome() {
+temp=$num
+reverse=0
+rem=0
+while [ $num -gt 0 ]
+do
+rem=`expr $num % 10 `
+num=`expr $num / 10 `
+reverse=`expr $reverse \* 10 + $rem`
+done
+if [ $temp -eq $reverse ]
+then
+    echo "Number is palindrome"
+else
+    echo "Number is not palindrome"
+fi
+
+f=1
+for(( i=2; i<=$reverse/2; i++ ))
+do
+        if [ $(( $reverse%i )) -eq 0 ]
+        then
+        f=0
+        break
+        fi
+done
+        if  [ $f -eq 1 ]
+        then
+        echo "$reverse is prime"
+        else
+        echo "$reverse is not prime"
+        fi
+}
+
+read -p "Enter the number to check: " num
+prime $num
+palindrome $num

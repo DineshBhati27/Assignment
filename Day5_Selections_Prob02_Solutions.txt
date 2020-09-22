@@ -1,0 +1,379 @@
+If..else..fi Statement
+
+1)
+#!/bin/bash -x
+
+a=$(($RANDOM%900 + 100))
+b=$(($RANDOM%900 + 100))
+c=$(($RANDOM%900 + 100))
+d=$(($RANDOM%900 + 100))
+e=$(($RANDOM%900 + 100))
+
+if [ $a -gt $b -a $a -gt $c -a $a -gt $d -a $a -gt $e ]
+then
+echo "$a is Maximum"
+elif [ $b -gt $a -a $b -gt $c -a $b -gt $d -a $b -gt $e ]
+then
+echo "$b is Maximum"
+elif [ $c -gt $a -a $c -gt $b -a $c -gt $d -a $c -gt $e ]
+then
+echo "$c is Maximum"
+elif [ $d -gt $a -a $d -gt $b -a $d -gt $c -a $d -gt $e ]
+then
+echo "$d is Maximum"
+else
+echo "$e is Maximum"
+fi
+
+if [ $a -lt $b -a $a -lt $c -a $a -lt $d -a $a -lt $e ]
+then
+echo "$a is Minimum"
+elif [ $b -lt $a -a $b -lt $c -a $b -lt $d -a $b -lt $e ]
+then
+echo "$b is Minimum"
+elif [ $c -lt $a -a $c -lt $b -a $c -lt $d -a $c -lt $e ]
+then
+echo "$c is Minimum"
+elif [ $d -lt $a -a $d -lt $b -a $d -lt $c -a $d -lt $e ]
+then
+echo "$d is Minimum"
+else
+echo "$e is Minimum"
+fi
+
+
+2)
+#!/bin/bash -x
+read -p "Enter day of the month: " day
+
+read -p "Enter month:" month
+
+    if [ $month -eq 3 -a $day -ge 20 -a $day -le 31 ]
+    then
+        echo "True"
+    elif [ $month -eq 4 -a $day -ge 1 -a $day -le 31 ]
+    then
+        echo "True"
+    elif [ $month -eq 5 -a $day -ge 1 -a $day -le 31 ]
+    then
+         echo "True"
+    elif [ $month -eq 6 -a $day -ge 1 -a $day -le 20 ]
+    then
+        echo "True"
+    else
+     echo "False"
+    fi
+
+
+
+3)
+#!/bin/bash -x
+read -p "Enter a year:" year
+if [ $year -gt 999 -a $year -lt 10000 ]
+then
+   if [ $(($year % 4 == 0)) -a $(($year % 100 != 0)) -o $(($year % 400 == 0)) ]
+     then
+      echo "Year is leap year"
+     else
+      echo "Year is not leap year"
+     fi
+else
+echo "Number is not 4 Digit"
+fi
+
+
+4)
+#!/bin/bash -x
+chances=$(($RANDOM%2))
+if [ $chances -eq 0 ]
+   then
+       echo "Heads"
+   else
+       echo "Tails"
+fi
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+if...elif...else...fi
+
+1)
+#!/bin/bash -x
+read -p "Enter a Single Digit Number" num
+if [ $num == 0 ]
+then
+echo "ZERO"
+elif [ $num == 1 ]
+then
+echo "ONE"
+elif [ $num == 2 ]
+then
+echo "TWO"
+elif [ $num == 3 ]
+then
+echo "THREE"
+elif [ $num == 4 ]
+then
+echo "FOUR"
+elif [ $num == 5 ]
+then
+echo "FIVE"
+elif [ $num == 6 ]
+then
+echo "SIX"
+elif [ $num == 7 ]
+then
+echo "SEVEN"
+elif [ $num == 8 ]
+then
+echo "EIGHT"
+elif [ $num == 9 ]
+then
+echo "NINE"
+else
+echo "NOT  A SINGLE DIGIT NUMBER"
+fi
+
+2)
+read -p "Enter a week number between 1-7" weekday
+if [ $weekday == 1 ]
+then
+echo "Monday"
+elif [ $weekday == 2 ]
+then
+echo "Tuesday"
+elif [ $weekday == 3 ]
+then
+echo "Wednesday"
+elif [ $weekday == 4 ]
+then
+echo "Thursday"
+elif [ $weekday == 5 ]
+then
+echo "Friday"
+elif [ $weekday == 6 ]
+then
+echo "Saturday"
+elif [ $weekday == 7 ]
+then
+echo "Sunday"
+else
+echo "Input is Incorrect"
+fi
+
+3)
+#!/bin/bash -x
+read -p "Enter a number" num
+if [ $num -ge 0 -a $num -le 9 ]
+then
+echo "UNITS"
+elif [ $num -ge 10 -a $num -le 99 ]
+then
+echo "TENS"
+elif [ $num -ge 100 -a $num -le 999 ]
+then
+echo "HUNDREDS"
+elif [ $num -ge 1000 -a $num -le 9999 ]
+then
+echo "THOUSANDS"
+fi
+
+4)
+#!/bin/bash -x
+read -p "Enter 1st Number" Num1
+read -p "Enter 2nd Number" Num2
+read -p "Enter 3rd Number" Num3
+first=$(( $Num1 + $Num2 * $Num3 ))
+second=$(( $Num1 % $Num2 + $Num3 ))
+third=$(( $Num3 + $Num1 / $Num2 ))
+fourth=$(( $Num1 * $Num2 + $Num3 ))
+
+if [ $first -gt $second -a $first -gt $third -a $first -gt $fourth ]
+then
+ echo " $first is Maximum"
+elif [ $second -gt $first -a $second -gt $third -a $second -gt $fourth ]
+then
+ echo " $second is Maximum"
+elif [ $third -gt $first -a $third -gt $second -a $third -gt $fourth ]
+then
+ echo " $third is Maximum"
+else
+ echo " $fourth is Maximum"
+fi
+
+if [ $first -lt $second -a $first -lt $third -a $first -lt $fourth ]
+then
+ echo " $first is Minimum"
+elif [ $second -lt $first -a $second -lt $third -a $second -lt $fourth ]
+then
+ echo " $second is Minimum"
+elif [ $third -lt $first -a $third -lt $second -a $third -lt $fourth ]
+then
+ echo " $third is Minimum"
+else
+ echo " $fourth is Minimum"
+fi
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Case Statements
+
+1)
+#!/bin/bash -x
+read -p "Enter a Single Digit Number" num
+case $num in
+    0)
+      echo "ZERO"
+     ;;
+    1)
+      echo "ONE"
+     ;;
+    2)
+      echo "TWO"
+     ;;
+    3)
+      echo "THREE"
+    ;;
+    4)
+      echo "FOUR"
+    ;;
+    5)
+      echo "FIVE"
+    ;;
+    6)
+      echo "SIX"
+    ;;
+    7)
+      echo "SEVEN"
+    ;;
+    8)
+      echo "EIGHT"
+    ;;
+    9)
+      echo "NINE"
+    ;;
+    *)
+      echo "NOT A SINGLE DIGIT NUMBER"
+    ;;
+esac
+
+2)
+#!/bin/bash -x
+read -p "Enter a week number between 1-7" Weekday
+case $Weekday in
+    1)
+      echo "Monday"
+    ;;
+    2)
+      echo "Tuesday"
+    ;;
+    3)
+      echo "Wednesday"
+    ;;
+    4)
+      echo "Thursday"
+    ;;
+    5)
+      echo "Friday"
+    ;;
+    6)
+      echo "Saturday"
+    ;;
+    7)
+      echo "Sunday"
+    ;;
+    *)
+      echo "Input is Incorect"
+    ;;
+esac
+
+
+3)
+#!/bin/bash -x
+read -p "Enter a number" num
+case  $num in
+                [0-9])
+                  echo "UNITS"
+                  ;;
+           [1-9][0-9])
+                  echo "TENS"
+                  ;;
+      [1-9][0-9][0-9])
+                  echo "HUNDREDS"
+                  ;;
+ [1-9][0-9][0-9][0-9])
+                  echo "THOUSANDS"
+                  ;;
+                    *)
+                  echo "INPUT GREATER THAN THOUSANDS"
+                  ;;
+esac
+
+or 
+
+echo "Enter a Number"
+read number
+case $number in
+        1)
+           echo "Unit";;
+        10)
+             echo "Ten" ;;
+        100)
+               echo "Hundred";;
+        1000)
+                echo "Thousand";;
+        10000)
+                   echo "Ten Thousand";;
+        100000)
+                    echo "Lakh";;
+        1000000)
+                       echo "Ten Lakh";;
+        10000000)
+                        echo "Crore";;
+
+                      *)
+              echo "not a valid input";;
+esac
+
+
+4)
+#!/bin/bash -x
+read -p "Enter a  Number (1-4):" num
+case $num in
+        1)
+         echo "Coverting Feet to Inch"
+         read -p " Enter feet" feet
+         result=`echo $feet | awk '{inch=$feet * 12} {print inch}'` 
+         echo "$result"
+         ;;
+        2)
+         echo "Converting Feet to Meter"
+         read -p " Enter feet" feet
+         result=`echo $feet | awk '{meter=$feet/3.26}{print meter}'`
+         echo "$result"
+         ;;
+        3)
+         echo "Converting Inch to Feet"
+         read -p "Enter Inch" Inch
+         result=`echo $Inch | awk{feet=$Inch/2}{print feet}'`
+         echo "$result"
+         ;;
+        4)
+         echo "Coverting Meter to Feet"
+         read -p "Enter Meter" Meter
+         result=`echo $Meter | awk '{feet=$Meter*3.26}{print feet}'` 
+         echo "$result"
+         ;;
+esac
+
+
+
+
+
+
+
+
+
+
+

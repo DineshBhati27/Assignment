@@ -1,0 +1,182 @@
+﻿1)Get user info from /etc/passwd and change ownership of user's home directory 
+
+
+a)cat /etc/passwd | awk -F: '{$3>1000} {print $0}'
+b)cat /etc/passwd | awk -F: '{$3>1000} {print $1}'
+c)cat /etc/passwd | awk -F: '{$3>1000} {print $3}'
+d)cat /etc/passwd | awk -F: '{$3>1000} {print $2=$6}'
+e)list=`echo $USER` and home=`echo $HOME`
+f) chown dinesh /c/Users/Admin
+
+
+2)Move Files from one folder to the Respective folders
+
+
+a) mkdir temp and touch abc.txt def.txt ghi.txt jkl.txt
+b) ls -l
+#!/bin/bash -x
+for file in `ls *.txt`
+do
+    foldername=`echo $file | awk -F. '{print $1}'`;
+    echo $foldername
+    if [ -d $foldername ]
+     then
+           rm -r $foldername
+    fi
+    mkdir $foldername
+    cp $file $foldername
+done
+
+
+3)Append currentdate to all log files which has extension.log.1 from folder
+
+
+a)$ touch abc.log.1 def.log.1 ghi.log.1 jkl.log.1 mni.log.1
+b)$ ls *.log.1
+d)$ date +"%d%m%y"
+
+
+#!/bin/bash -x
+for file in `ls *.log.1`
+do
+  name=`echo $file | awk -F. '{print $1}'`
+  echo $name
+  today=$(date +"%d%m%y")
+  echo $today
+  xyz=$name-$today".log"
+  echo $xyz
+  mv $file $xyz
+done
+
+
+4)Archive the files from /var/log which have modified 7 days ago move it to backup folder
+
+
+for files in `find/var/log  -mtime +7 -type f`
+do
+cp  $files /var/log/backup
+echo "Files moved to backup folder"
+done
+
+
+5)Print last 4 frequently access urls count in sorted order
+
+
+egrep -o 'https?://[^\)"]+' access.log | sort | uniq -c | sort -nr | head -4
+
+
+6)Print list of of last 4 frequently access url at particular hour from access.log
+
+
+timestamp="29/Oct/2019:06:31:06"
+cat access.log | grep "$timestamp" | egrep -o 'https?://[^\)"]+' | sort | uniq -c | sort -nr
+
+
+7)Print list of web response code count in the unique sorted order at specific hour
+
+
+timestamp="29/Oct/2019:06:31:06"
+cat access.log | grep "$timestamp" | awk -F\" '{print $3}' | awk '{print $1}' | sort | uniq -c | sort -nr
+
+
+8)Print list of last 10 unique sorted cilent ip from access.log
+
+
+$ tail access.log | awk '{print $1}' | sort | uniq -c | sort -nr
+
+
+
+
+9) chech if folder exists or not if not present create it
+
+
+folder=temp
+if [ -d $folder ]
+then
+echo "Folder already Exists"
+else
+mkdir $folder
+echo "Folder created"
+fi
+
+
+10)Execute command "hello" and "ls" check its execution status
+
+
+#./bin/bash -x
+com=`ls`
+status=$?
+if [ $status -eq 0 ]
+then
+       echo "ls Command executed successfully"
+else
+      echo "ls Command not executed successfully"
+fi
+
+
+com=`hello`
+status=$?
+if [ $status -eq 0 ]
+then
+       echo "hello Command executed successfully"
+else
+      echo "hello Command not executed successfully"
+fi
+
+
+11)
+
+
+#!/bin/bash -x
+case "$usersecret" 
+              " ") echo"Setting environment variable"
+                        usersecret="dH34xJaa23"
+              ;; 
+              *) echo "Environment variable already set"
+              ;;
+esac
+
+
+12)
+$ cat access.log | grep -c -r systemd
+
+
+
+
+13)
+ps -o pid,ppid,cmd,%mem,%cpu
+
+
+14)
+
+
+1)
+a)$ cat data.csv | awk '{if($4>10000)print$0}'
+b)$ cat data.csv | awk '{if($4>10000)print$2,$7}'
+
+
+
+
+2)
+a)$ cat data.csv | grep CAPTAIN | awk '{print $0}'
+b)$ cat data.csv | grep CAPTAIN | awk '{sum+=$7}END{print sum}'
+
+
+3)
+a &  b)$  cat data.csv | awk '{if($5>7000 && $5<10000)print$3,$5}'
+
+
+4)
+a & b)$ cat data.csv | grep CAPTAIN | awk '{sum+=$4}END{print sum/NR}'   
+
+
+15)
+$ diff -qr original/ updated/
+diff: original/: No such file or directory
+diff: updated/: No such file or directory
+
+
+$ cp -r original/ original-backup
+
+
+$ diff  -qr updated/ original-backup/

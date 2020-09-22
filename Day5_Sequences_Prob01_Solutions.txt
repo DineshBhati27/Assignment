@@ -1,0 +1,43 @@
+1)$ echo $(($RANDOM%10))
+2)$ echo $(($RANDOM%6+1))
+3)
+#!/bin/bash -x
+Number1=$(($RANDOM%6+1))
+Number2=$(($RANDOM%6+1))
+Sum=$(( $Number1 + $Number2 ))
+echo "$Sum"
+4)
+#!/bin/bash -x
+Num1=$(($RANDOM%100))
+Num2=$(($RANDOM%100))
+Num3=$(($RANDOM%100))
+Num4=$(($RANDOM%100))
+Num5=$(($RANDOM%100))
+Sum=$(( $Num1 + $Num2 + $Num3 + $Num4 + $Num5 ))
+Avg=$(( $Sum/5 ))
+
+5)
+#!/bin/bash 
+
+read -p "Enter value to be converted to ft: " inch
+result=`echo $inch | awk '{ft=$inch/12} {print ft}'`
+echo "$inch inches is $result ft"
+
+read -p "Enter length (feet): " l
+read -p "Enter breadth (feet): " b
+l1=`echo $l | awk '{len=$l/3.28} {print len}'`
+b1=`echo $b | awk '{bre=$b/3.28} {print bre}'`
+echo "Rectangular plot of $l feet x $b feet is $l1 meters x $b1 meters"
+
+read -p "Enter length in feet: " l1
+read -p "Enter breadth in feet: " b1
+area=$(( l1*b1 ))
+acre=`echo $area | awk '{acre=$area/43560} {print acre}'`
+echo "Area of 1 plot in acre is: " $acre
+result=`echo $acre | awk '{res=$acre*25} {print res}'`
+echo "Area of 25 such plots in acres is: " $result
+
+
+
+
+
